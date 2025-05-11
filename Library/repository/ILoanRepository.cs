@@ -9,6 +9,5 @@ public interface ILoanRepository
     Task DeleteLoan(int id);
     Task<IEnumerable<Loan>> GetLoansByBorrowerName(string borrowerName);
     Task<IEnumerable<Loan>> GetLoansByBookId(int bookId);
-    Task<Loan> GetLoanById(int id);
     
 }

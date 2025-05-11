@@ -1,47 +1,46 @@
-﻿Instructions
-```bash
-Clone the repository
-```bash
-git clone
-cd WebApplication2
-```
-Install dependencies
-```bash
-dotnet restore
-```
-Build the project
-```bash
-dotnet build
-```
-Apply database migrations
-```bash
-dotnet ef database update
-```
-Run the application
-```bash
-dotnet run
-```
-Open your web browser and navigate to `http://localhost:7004` or `https://localhost:5114` to access the application.
+﻿## Instructions (Visual Studio 2022)
 
-Functionality Overview
-Core Features
-Book Management:
-Add, update, delete, and search for books.
-Endpoints: /api/books, /api/books/search.
+1. Clone the repository.
+2. Open the solution in Visual Studio 2022.
+3. Run the application.
 
-Loan Management:
-Loan books to borrowers and return them.
-Endpoints: /api/loans/loan, /api/loans/return.
+Open your web browser and navigate to:
+- `http://localhost:7004` or
+- `https://localhost:5114`
 
-Overdue Reminders:
-Automatically send email reminders for overdue books.
-Endpoint: /api/loans/send-overdue-reminders.
+---
 
-Functionality from Point 7
-Overdue Reminder Emails:
-The application checks for overdue loans (loans older than 10 seconds for testing purposes).
-Sends an email to the borrower with a list of overdue books.
-Uses the SmtpEmailService to send emails via the configured SMTP server.
+## Functionality Overview
 
-Testing the Application
-Swagger UI - it will be available at `http://localhost:7004/swagger` or `https://localhost:5114/swagger`.
+### 📚 Book Management
+- Add, update, delete, and search for books.
+- **Endpoints**: `/api/Book`, `/api/Book/{id},`, `/api/Book/search`
+
+### 📖 Loan Management
+- Loan books to borrowers and return them.
+- **Endpoints**: `/api/Loan/loan`, `/api/Loan/return`, `/api/Loan/search`
+
+### ⏰ Overdue Reminders
+- Automatically sends email reminders for overdue books.
+- **Endpoint**: `/api/loans/send-overdue-reminders`
+
+> The application checks for overdue loans (set to 10 seconds for testing).
+> Uses `SmtpEmailService` to send emails via a configured SMTP server.
+> Make sure to set up the SMTP server in `appsettings.json`:
+
+``` appsettings.json
+  "AllowedHosts": "*",
+  "EmailSettings": {
+    "SmtpServer": "smtp.gmail.com",
+    "SmtpPort": 587,
+    "SmtpUsername": "cheresandreea@gmail.com",
+    "SmtpPassword": "**** **** **** ****", //the password from the app password
+    "FromEmail": "cheresandreea@gmail.com"
+  }
+```
+
+## 🧪 Testing the Application
+
+- Visit Swagger UI at:
+    - `http://localhost:7004/swagger`
+    - `https://localhost:5114/swagger`
